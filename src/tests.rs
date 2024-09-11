@@ -8,9 +8,11 @@ mod tests {
 
     #[test]
     fn test_addition() {
-        let input: &str = "1+1+1";
-        string_parser::parse_equation(input);
-        // let thing: Equation<i32, i32> = string_parser::parse_equation(input);
-        // assert_eq!(thing.operand_a + thing.operand_b, 2);
+        assert_eq!(string_parser::parse_equation("1+1"), 2);
+    }
+
+    #[test]
+    fn test_subtraction() {
+        assert_eq!(string_parser::parse_equation("1-1"), 0);
     }
 }

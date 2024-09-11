@@ -1,10 +1,14 @@
-use std::ops;
-
 use regex::Regex;
 
 pub fn parse_equation(input: &str) -> i64 {
+    // Clear any whitespace
+    if input.contains(char::is_whitespace) {
+        let c: String = input.chars().filter(|c| !c.is_whitespace()).collect();
+        return parse_equation(&c);
+    }
+
     // Basic
-    let mut result: i64 = 0;
+    let mut result: i64;
     let mut re = Regex::new(r"[+-/\*]").unwrap();
     let operands: Vec<&str> = re.split(input).collect();
     re = Regex::new(r"\d+").unwrap();
